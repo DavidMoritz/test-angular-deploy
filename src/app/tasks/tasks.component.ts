@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
+import { type Task } from './task/task.model';
 
 const dummyTasks = [
   {
@@ -37,8 +38,16 @@ const dummyTasks = [
 export class TasksComponent {
   name = input.required<string>();
   id = input.required<string>();
+  tasks = dummyTasks;
 
   get selectedUserTasks() {
-    return dummyTasks.filter((task) => task.userId === this.id());
+    return this.tasks.filter((task) => task.userId === this.id());
+  }
+
+  onCompleteTask(completedTask: Task) {
+    this.tasks = this.tasks.filter(
+      (thisTask) => thisTask.id !== completedTask.id
+    );
+    console.log(completedTask);
   }
 }
