@@ -11,16 +11,18 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  id = input.required<string>();
-  avatar = input.required<string>();
-  name = input.required<string>();
+  user = input.required<{
+    id: string;
+    avatar: string;
+    name: string;
+  }>();
   select = output<string>();
 
   avatarPath = computed(() => {
-    return 'assets/users/' + this.avatar();
+    return 'assets/users/' + this.user().avatar;
   });
 
   onSelectUser() {
-    this.select.emit(this.name());
+    this.select.emit(this.user().name);
   }
 }
