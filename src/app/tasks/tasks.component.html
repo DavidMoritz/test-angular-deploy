@@ -1,8 +1,12 @@
+@if(showAddTask) {
+<h3>New task for {{ name() }}!</h3>
+<app-new-task />
+}
 <section id="tasks">
   <header>
     <h2>Tasks for {{ name() }}!</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onClickNewTask()">Add Task</button>
     </menu>
   </header>
 

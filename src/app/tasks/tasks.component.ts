@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { type Task } from './task/task.model';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 const dummyTasks = [
   {
@@ -31,17 +32,22 @@ const dummyTasks = [
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
   name = input.required<string>();
   id = input.required<string>();
+  showAddTask = false;
   tasks = dummyTasks;
 
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.id());
+  }
+
+  onClickNewTask() {
+    this.showAddTask = true;
   }
 
   onCompleteTask(completedTask: Task) {
