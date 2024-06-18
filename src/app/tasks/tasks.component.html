@@ -1,6 +1,6 @@
 @if(showAddTask) {
 <h3>New task for {{ name() }}!</h3>
-<app-new-task (cancel)="onCancelNewTask()" (add)="onAddTask($event)" />
+<app-new-task (close)="onCloseNewTask()" [userId]="id()" />
 }
 <section id="tasks">
   <header>
