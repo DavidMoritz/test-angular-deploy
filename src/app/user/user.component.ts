@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-  computed,
-  input,
-} from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -20,7 +14,7 @@ export class UserComponent {
   id = input.required<string>();
   avatar = input.required<string>();
   name = input.required<string>();
-  @Output() select = new EventEmitter();
+  select = output<string>();
 
   avatarPath = computed(() => {
     return 'assets/users/' + this.avatar();
