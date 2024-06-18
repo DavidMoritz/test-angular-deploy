@@ -3,7 +3,7 @@ import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
-interface User {
+export interface User {
   id: string;
   avatar: string;
   name: string;
@@ -18,13 +18,13 @@ interface User {
 })
 export class UserComponent {
   user = input.required<User>();
-  select = output<string>();
+  select = output<User>();
 
   avatarPath = computed(() => {
     return 'assets/users/' + this.user().avatar;
   });
 
   onSelectUser() {
-    this.select.emit(this.user().id);
+    this.select.emit(this.user());
   }
 }
