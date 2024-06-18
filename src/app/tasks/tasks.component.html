@@ -1,6 +1,6 @@
 @if(showAddTask) {
 <h3>New task for {{ name() }}!</h3>
-<app-new-task />
+<app-new-task (cancel)="onCancelNewTask()" />
 }
 <section id="tasks">
   <header>

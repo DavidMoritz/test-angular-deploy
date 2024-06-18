@@ -50,6 +50,10 @@ export class TasksComponent {
     this.showAddTask = true;
   }
 
+  onCancelNewTask() {
+    this.showAddTask = false;
+  }
+
   onCompleteTask(completedTask: Task) {
     this.tasks = this.tasks.filter(
       (thisTask) => thisTask.id !== completedTask.id
