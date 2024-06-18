@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { type Task } from './task/task.model';
+import { type NewTask, type Task } from './task/task.model';
 import { NewTaskComponent } from './new-task/new-task.component';
 
 const dummyTasks = [
@@ -59,5 +59,14 @@ export class TasksComponent {
       (thisTask) => thisTask.id !== completedTask.id
     );
     console.log(completedTask);
+  }
+
+  onAddTask(newTask: NewTask) {
+    this.tasks.push({
+      ...newTask,
+      id: `t${this.tasks.length + 1}`,
+      userId: this.id(),
+    });
+    this.showAddTask = false;
   }
 }
