@@ -1,8 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-users';
 import { User } from './user.model';
-
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
 @Component({
   selector: 'app-user',
@@ -13,6 +10,7 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class UserComponent {
   user = input.required<User>();
+  selected = input.required<Boolean>();
   select = output<User>();
 
   avatarPath = computed(() => {
