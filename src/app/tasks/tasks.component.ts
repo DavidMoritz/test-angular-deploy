@@ -1,6 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { type NewTask, type Task } from './task/task.model';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { TasksService } from './tasks.service';
 
@@ -15,8 +14,7 @@ export class TasksComponent {
   name = input.required<string>();
   id = input.required<string>();
   showAddTask = false;
-
-  constructor(private tasksService: TasksService) {}
+  private tasksService = inject(TasksService);
 
   get selectedUserTasks() {
     return this.tasksService.getUserTasks(this.id());
@@ -28,9 +26,5 @@ export class TasksComponent {
 
   onCloseNewTask() {
     this.showAddTask = false;
-  }
-
-  onCompleteTask(completedTask: Task) {
-    this.tasksService.removeTask(completedTask.id);
   }
 }
