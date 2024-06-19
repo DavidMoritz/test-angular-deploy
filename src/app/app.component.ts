@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { type User } from './user/user.model';
+import { DUMMY_USERS } from './dummy-users';
 import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
@@ -13,8 +14,8 @@ import { TasksComponent } from './tasks/tasks.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  users = DUMMY_USERS;
   selectedUser?: User;
-  query = signal('');
 
   onSelectUser(user: User) {
     this.selectedUser = user;
